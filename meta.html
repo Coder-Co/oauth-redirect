@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Meta OAuth Redirect</title></head>
+<body>
+<script>
+  var params = window.location.search;
+  var code  = new URLSearchParams(params).get('code')  || '';
+  var state = new URLSearchParams(params).get('state') || '';
+  var error = new URLSearchParams(params).get('error') || '';
+  if (error) {
+    document.body.innerText = 'OAuth error: ' + error;
+  } else {
+    window.location.href =
+      'com.cocoder.socialmediapostingapp://oauth/meta?code=' +
+      encodeURIComponent(code) + '&state=' + encodeURIComponent(state);
+  }
+</script>
+<p>Weiterleitung zur App...</p>
+</body>
+</html>
